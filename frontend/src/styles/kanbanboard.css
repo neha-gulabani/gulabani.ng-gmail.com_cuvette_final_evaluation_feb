@@ -109,6 +109,7 @@
 
 
 
+
 .task-header {
     display: flex;
     justify-content: space-between;
@@ -375,6 +376,8 @@
     padding: 5px;
     margin-top: 6px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .checklist-item input[type="checkbox"] {
