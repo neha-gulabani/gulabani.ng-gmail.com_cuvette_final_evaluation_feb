@@ -123,18 +123,11 @@
     cursor: pointer;
 }
 
-/* .task-meta-card {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.8rem;
-    color: #555;
-    margin-top: 16px;
-} */
+
 
 .task-meta-card {
     display: flex;
-    /* flex-wrap: wrap; */
+
     gap: 8px;
 }
 
@@ -169,7 +162,7 @@
     display: flex;
     gap: 2px;
     margin-left: auto;
-    /* Push buttons to the right */
+
 
 }
 
@@ -189,7 +182,7 @@
     background-color: #e5e5e5;
 }
 
-/* Task Title Truncated */
+
 .task-title.collapsed {
     white-space: nowrap;
     overflow: hidden;
@@ -197,27 +190,27 @@
     position: relative;
 }
 
-/* Task Title - Expanded (Untruncated) */
+
 .task-title.expanded {
     white-space: normal;
-    /* Allows wrapping */
+
     overflow: visible;
 }
 
-/* Task Title - Show Full Title on Hover */
+
 .task-title.hoverable-title:hover {
     white-space: normal;
-    /* Removes truncation */
+
     overflow: visible;
-    /* Displays full title */
+
 }
 
-/* Full Title Tooltip */
+
 .task-title .full-title-tooltip {
     visibility: hidden;
     position: absolute;
     top: 100%;
-    /* Position it below the title */
+
     left: 0;
     background-color: white;
     padding: 4px 8px;
@@ -230,7 +223,7 @@
     width: max-content;
     max-width: 280px;
     overflow: hidden;
-    /* text-overflow: ellipsis; */
+
 }
 
 .kanban-task.expanded>h4,
@@ -241,11 +234,7 @@
     visibility: visible;
 }
 
-/* Show full title tooltip on hover */
-/* .task-title:hover {
-    visibility: visible;
-    top: 100%;
-} */
+
 
 .priority {
     display: flex;

@@ -15,7 +15,7 @@ const Analytics = () => {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/task/analytics', {
+        axios.get('https://promanage-jk02.onrender.com/api/task/analytics', {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

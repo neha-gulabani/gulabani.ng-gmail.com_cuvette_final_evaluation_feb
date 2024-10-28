@@ -26,7 +26,7 @@ const KanbanBoard = ({ tasks: initialTasks, onSave, onStatusChange }) => {
     }, [initialTasks]);
 
     const handleStatusChange = (taskId, newStatus) => {
-        axios.put(`http://localhost:5000/api/task/updateTaskStatus/${taskId}`, { status: newStatus }, {
+        axios.put(`https://promanage-jk02.onrender.com/api/task/updateTaskStatus/${taskId}`, { status: newStatus }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -65,7 +65,7 @@ const KanbanBoard = ({ tasks: initialTasks, onSave, onStatusChange }) => {
 
 
 
-        axios.put(`http://localhost:5000/api/task/updateChecklist/${taskId}`, {
+        axios.put(`https://promanage-jk02.onrender.com/api/task/updateChecklist/${taskId}`, {
             checklistIndex,
             completed: updatedChecklist[checklistIndex].completed
         }, {

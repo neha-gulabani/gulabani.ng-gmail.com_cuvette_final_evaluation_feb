@@ -20,7 +20,7 @@ const Settings = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:5000/api/auth/profile', {
+        axios.get('https://promanage-jk02.onrender.com/api/auth/profile', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -79,7 +79,7 @@ const Settings = () => {
         try {
 
 
-            const response = await axios.put('http://localhost:5000/api/auth/update', {
+            const response = await axios.put('https://promanage-jk02.onrender.com/api/auth/update', {
                 name,
                 email,
                 oldPassword,

@@ -1,37 +1,26 @@
-/* Adjust main content to give space between header and Kanban board */
-/* .main-content {
-    flex: 1;
-    padding: 120px 20px 20px;
-    /* Adds space below fixed header */
-/* overflow: hidden; */
-/* Prevents vertical scroll */
-
-/* z-index: 1; */
-
-
-*/ .main-container {
+.main-container {
     z-index: 1;
 }
 
 .main-content {
     flex: 1;
     padding: 120px 20px 20px;
-    /* Space below fixed header */
+
     margin: 50px;
-    /* overflow-y: hidden; */
+
     z-index: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Header styling adjustments for layout */
+
 header {
     position: fixed;
     top: 0;
     left: 295px;
-    /* Start header after sidebar */
+
     width: calc(100% - 370px);
-    /* Full width minus sidebar */
+
     z-index: 1;
     background-color: #ffffff;
     padding: 20px;
@@ -41,7 +30,7 @@ header {
 
 }
 
-/* Top section of the header for welcome message and date */
+
 .header-top {
     display: flex;
     justify-content: space-between;
@@ -49,7 +38,7 @@ header {
     width: 100%;
 }
 
-/* Bottom section of the header for board title, button, and dropdown */
+
 .header-bottom {
     display: flex;
     justify-content: space-between;

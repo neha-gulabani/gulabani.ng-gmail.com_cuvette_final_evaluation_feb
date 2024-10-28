@@ -43,7 +43,7 @@
 .login-form,
 .register-form {
     width: 350px;
-    /* max-width: 1300px; */
+
     text-align: center;
 }
 
@@ -62,7 +62,7 @@ h2 {
 .input-group input {
     width: 100%;
     padding: 12px 40px 12px 40px;
-    /* Adjust padding for left and right icons */
+
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -102,7 +102,7 @@ h2 {
     background-color: #008c9e;
 }
 
-/* Transparent button styling */
+
 .transparent-btn {
     background-color: transparent;
     border: 2px solid #17A2B8;

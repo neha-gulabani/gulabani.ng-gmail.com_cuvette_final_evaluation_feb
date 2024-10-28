@@ -54,7 +54,7 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     }, []);
 
     const handleDeleteClick = () => {
-        axios.delete(`http://localhost:5000/api/task/deleteTask/${tasks._id}`, {
+        axios.delete(`https://promanage-jk02.onrender.com/api/task/deleteTask/${tasks._id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

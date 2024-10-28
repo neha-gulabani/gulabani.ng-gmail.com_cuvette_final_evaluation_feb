@@ -6,10 +6,10 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    sharedWith: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] // Users with whom this user shares tasks
+    sharedWith: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 }, { timestamps: true });
 
-// Hash password before saving user
+
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
     const salt = await bcrypt.genSalt(10);

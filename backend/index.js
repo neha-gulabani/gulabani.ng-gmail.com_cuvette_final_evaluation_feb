@@ -6,7 +6,7 @@ const cors = require('cors');
 dotenv.config();
 const app = express();
 
-// Middleware
+
 app.use(express.json());
 const corsOptions = {
     origin: '*',
@@ -15,11 +15,11 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/task', require('./routes/users')); // Add this line for users route
 
-// MongoDB Connection
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/task', require('./routes/users'));
+
+
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
-// Start server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

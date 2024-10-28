@@ -12,8 +12,8 @@ const AddPeopleModal = ({ isOpen, onClose, tasks }) => {
             const token = localStorage.getItem('token');
             setIsSaving(true);
             const response = await axios.post(
-                'http://localhost:5000/api/task/assignTasksToUser', // Assign tasks endpoint
-                { email, tasks }, // Send email and tasks array
+                'https://promanage-jk02.onrender.com/api/task/assignTasksToUser',
+                { email, tasks },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

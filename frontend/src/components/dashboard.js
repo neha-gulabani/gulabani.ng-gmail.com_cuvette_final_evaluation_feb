@@ -6,14 +6,14 @@ import { jwtDecode } from 'jwt-decode';
 import '../styles/dashboard.css';
 import { useNavigate } from "react-router-dom";
 import { useUser } from '../UserContext';
-import { isTaskDueToday, isTaskDueThisWeek, isTaskDueThisMonth } from '../utils/dateHelper'; // Helper functions
+import { isTaskDueToday, isTaskDueThisWeek, isTaskDueThisMonth } from '../utils/dateHelper';
 import AddPeopleModal from './addpeople';
 
 const MainPage = () => {
     const [username, setUsername] = useState('');
     const [selectedTimeframe, setSelectedTimeframe] = useState('This Week');
-    const [tasks, setTasks] = useState([]); // Tasks state
-    const [filteredTasks, setFilteredTasks] = useState([]); // Filtered tasks based on timeframe
+    const [tasks, setTasks] = useState([]);
+    const [filteredTasks, setFilteredTasks] = useState([]);
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
@@ -49,7 +49,7 @@ const MainPage = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:5000/api/task/tasks', {
+            axios.get('https://promanage-jk02.onrender.com/api/task/tasks', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

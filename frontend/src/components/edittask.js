@@ -41,7 +41,7 @@ const EditTaskModal = ({ isOpen, onClose, taskData, onUpdate }) => {
             setAssignedTo(primaryAssignee ? primaryAssignee.email : user?.email || '');
         }
 
-        axios.get('http://localhost:5000/api/task/fetchUsers')
+        axios.get('https://promanage-jk02.onrender.com/api/task/fetchUsers')
             .then(response => {
                 console.log('res edit', response.data)
 
@@ -75,7 +75,7 @@ const EditTaskModal = ({ isOpen, onClose, taskData, onUpdate }) => {
             };
             console.log('updated task:', updatedTask)
 
-            axios.put(`http://localhost:5000/api/task/editTask/${taskData._id}`, updatedTask, {
+            axios.put(`https://promanage-jk02.onrender.com/api/task/editTask/${taskData._id}`, updatedTask, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },

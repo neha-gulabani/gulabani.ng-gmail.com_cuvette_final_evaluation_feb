@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-// Register (Sign Up)
+
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -49,12 +49,12 @@ router.put('/update', auth, async (req, res) => {
     try {
         const user = await User.findById(userId);
 
-        // Check if oldPassword matches the current password if a new password is provided
+
         if (newPassword && !(await bcrypt.compare(oldPassword, user.password))) {
             return res.status(400).json({ message: 'Old password is incorrect' });
         }
 
-        // Update user details
+
         if (name) user.name = name;
         if (email) user.email = email;
         if (newPassword) user.password = await bcrypt.hash(newPassword, 10);
@@ -70,14 +70,14 @@ router.put('/update', auth, async (req, res) => {
 
 router.get('/profile', auth, async (req, res) => {
     try {
-        // Find the user by their ID from the decoded token (set in `auth` middleware)
+
         const user = await User.findById(req.user._id).select('name email');
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Send user profile details (name and email)
+
         res.status(200).json(user);
     } catch (error) {
         console.error(error);

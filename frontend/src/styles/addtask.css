@@ -399,7 +399,6 @@
     width: 100%;
     padding: 8px 12px;
     padding-right: 10px;
-    /* Make room for the icon on the right */
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -414,7 +413,7 @@
     font-size: 14px;
     color: #666;
     pointer-events: none;
-    /* Makes the icon unclickable, so only the input is clickable */
+
 }
 
 

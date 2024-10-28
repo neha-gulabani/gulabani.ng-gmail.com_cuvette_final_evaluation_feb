@@ -38,7 +38,7 @@ const Auth = () => {
         e.preventDefault();
         setLoading(true); // Disable button while submitting
 
-        const endpoint = isLogin ? 'http://localhost:5000/api/auth/login' : 'http://localhost:5000/api/auth/register';
+        const endpoint = isLogin ? 'https://promanage-jk02.onrender.com/api/auth/login' : 'https://promanage-jk02.onrender.com/api/auth/register';
         const data = isLogin ? { email, password } : { name, email, password };
 
         // Clear previous error

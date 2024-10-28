@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
-    const token = req.header('Authorization')?.replace('Bearer ', ''); // Safely handle undefined case
-    console.log('Token received:', token); // Log token to verify it's being received
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    console.log('Token received:', token);
 
     if (!token) {
         return res.status(401).send('Access Denied: No Token Provided!');
@@ -12,8 +12,8 @@ const auth = (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         console.log('decoded', decoded)
-        req.user = decoded; // Attach decoded token data to req.user
-        console.log('Decoded User:', decoded); // Log decoded user
+        req.user = decoded;
+        console.log('Decoded User:', decoded);
         next();
     } catch (err) {
         res.status(400).send('Invalid Token');

@@ -25,7 +25,7 @@ const AddTaskModal = ({ isOpen, onClose, onSave }) => {
 
     useEffect(() => {
         if (isOpen) {
-            axios.get('http://localhost:5000/api/task/fetchUsers')
+            axios.get('https://promanage-jk02.onrender.com/api/task/fetchUsers')
                 .then(response => setUsers(response.data))
                 .catch(error => console.error('Error fetching users:', error));
         }
@@ -65,7 +65,7 @@ const AddTaskModal = ({ isOpen, onClose, onSave }) => {
                 checklist
             };
 
-            axios.post('http://localhost:5000/api/task/addTask', taskData, {
+            axios.post('https://promanage-jk02.onrender.com/api/task/addTask', taskData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
