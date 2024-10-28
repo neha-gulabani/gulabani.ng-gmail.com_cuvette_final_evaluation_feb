@@ -204,7 +204,7 @@ const EditTaskModal = ({ isOpen, onClose, taskData, onUpdate }) => {
                     <label className="checklist-label">Checklist ({completedTasks}/{totalTasks}) <span className="imp">*</span></label>
                     <div className="checklist-section">
                         {checklist.map((item, index) => (
-                            <div key={index} className="checklist-item">
+                            <div key={index} className="checklist-item-add">
                                 <div className="checkname">
                                     <input
                                         type="checkbox"

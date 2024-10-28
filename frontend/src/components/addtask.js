@@ -175,7 +175,7 @@ const AddTaskModal = ({ isOpen, onClose, onSave }) => {
                     <div className="checklist-section">
                         {checklist.map((item, index) => (
 
-                            <div key={index} className="checklist-item">
+                            <div key={index} className="checklist-item-add">
                                 <div className="checkname">
                                     <input
                                         type="checkbox"

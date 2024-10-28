@@ -371,13 +371,15 @@
 
 }
 
-.kanban-board>.checklist-item {
+.checklist-item {
     border: 1pt solid #E2E2E2;
     padding: 5px;
     margin-top: 6px;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
 
 .checklist-item input[type="checkbox"] {

@@ -112,12 +112,16 @@
 }
 
 
-.modal-overlay-add>.checklist-item {
+.checklist-item-add {
     display: flex;
     gap: 0.5rem;
     justify-content: space-between;
     max-width: 100%;
     overflow: hidden;
+    border-radius: 10px;
+    align-items: center;
+    border: 1pt solid #E2E2E2;
+    padding: 10px;
 
 }
 
