@@ -1,0 +1,60 @@
+.task-share-page {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border: 1pt solid #EDF5FE;
+
+}
+
+.task-meta {
+    margin-top: 20px;
+}
+
+.checklist-share {
+    margin-top: 30px;
+
+}
+
+.checklist-share h3 {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    text-align: left;
+
+}
+
+.checklist-share ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.checklist-share li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1pt solid #E2E2E2;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.checklist-share li input {
+    margin-right: 10px;
+}
+
+.overdue {
+    color: red;
+    font-weight: bold;
+}
+
+.sharetitle {
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 33px;
+    text-align: left;
+    color: black;
+
+}

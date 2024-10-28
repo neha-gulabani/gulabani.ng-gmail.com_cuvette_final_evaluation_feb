@@ -1,0 +1,502 @@
+.modal-overlay-add {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10 !important;
+}
+
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 550px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 80vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10 !important;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    max-height: 60vh;
+
+    padding-right: 10px;
+}
+
+
+.modal-overlay-add>input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.modal-overlay-add>label {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+
+
+}
+
+.checklist-label {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+
+}
+
+.imp {
+    color: red;
+}
+
+.priority-options {
+    display: flex;
+    gap: 0.5rem;
+}
+
+
+
+.priority-btn.high-priority {
+    background-color: #ffcccb;
+    color: #ff4d4d;
+}
+
+.priority-btn.moderate-priority {
+    background-color: #d4e6fc;
+    color: #3498db;
+}
+
+.priority-btn.low-priority {
+    background-color: #e1f3d8;
+    color: #28a745;
+}
+
+.checklist-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+
+.checklist-item {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    max-width: 100%;
+    overflow: hidden;
+
+}
+
+
+
+.checkname {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+
+    border: 1pt solid red;
+    flex-direction: row;
+    display: flex;
+
+}
+
+.add-checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.add-checklist-item input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.add-checklist-item button {
+    background-color: transparent;
+    color: #3498db;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem;
+}
+
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.left-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.right-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.date-btn {
+    background-color: #f0f0f0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+
+.calendar-container {
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translate(-210px, -180px);
+
+}
+
+.error-text {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+    margin-left: 10px;
+}
+
+.assigned-to-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+
+
+}
+
+.assigned-to-container label {
+    white-space: nowrap;
+
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.modal-overlay-add input {
+
+    flex: 1;
+
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-shadow: 0px 1px 2px 0px #4D40551A;
+
+}
+
+.priority-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.priority-container label {
+    white-space: nowrap;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.priority-options {
+    display: flex;
+    gap: 10px;
+}
+
+.priority-btn {
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: #767575;
+    width: Hug (175px)px;
+    height: Fixed (31px)px;
+    padding: 5px 10px 5px 10px;
+    gap: 8px;
+    border-radius: 8px;
+    opacity: 0px;
+    border: none;
+
+
+
+
+
+}
+
+.high-priority {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.h>i {
+    color: #ff6b6b;
+    font-size: 8px;
+
+
+
+}
+
+.moderate-priority {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.m>i {
+    color: #ffcc00;
+    font-size: 8px;
+
+}
+
+.low-priority {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.l>i {
+    color: #2ecc71;
+    font-size: 8px;
+
+}
+
+.assigned-to-container {
+    position: relative;
+}
+
+.users-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 90px;
+    width: 90%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.user-dropdown-item {
+    display: flex;
+
+    justify-content: space-between;
+    padding: 10px 12px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    flex-direction: row;
+}
+
+
+
+.user-dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.user-email {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.user-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #feeaea;
+    color: #333;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.user-email::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #feeaea;
+    color: #333;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.input-group-assign {
+    position: relative;
+    width: 100%;
+}
+
+.input-group-assign input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    padding-right: 10px;
+    /* Make room for the icon on the right */
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #666;
+    pointer-events: none;
+    /* Makes the icon unclickable, so only the input is clickable */
+}
+
+
+
+.assign-btn {
+    padding: 4px 60px;
+
+    color: #666;
+    background-color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    border: 1px solid #E2E2E2;
+
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+
+
+
+
+}
+
+.assign-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.user-name {
+    flex: 1;
+}
+
+.user-icon {
+    background-color: #007bff;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.save-btn {
+    width: 130px;
+    height: 45px;
+    left: 174.58px;
+    gap: 0px;
+    border-radius: 12px;
+    opacity: 0px;
+
+    background: #17A2B8;
+    color: white;
+    border: none;
+
+}
+
+.cancel-btn {
+    width: 130px;
+    height: 45px;
+    gap: 0px;
+    border-radius: 12px;
+
+    opacity: 0px;
+    background: white;
+    border: 1pt solid red;
+    color: red;
+}
+
+.date-btn {
+    width: 165px;
+    height: 45px;
+    top: 521px;
+    left: 39px;
+    gap: 0px;
+    border-radius: 12px;
+
+    opacity: 0px;
+    color: #707070;
+    border: 1px solid #E2E2E2
+}

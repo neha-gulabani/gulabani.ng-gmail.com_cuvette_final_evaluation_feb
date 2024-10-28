@@ -1,0 +1,156 @@
+/* Adjust main content to give space between header and Kanban board */
+/* .main-content {
+    flex: 1;
+    padding: 120px 20px 20px;
+    /* Adds space below fixed header */
+/* overflow: hidden; */
+/* Prevents vertical scroll */
+
+/* z-index: 1; */
+
+
+*/ .main-container {
+    z-index: 1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 120px 20px 20px;
+    /* Space below fixed header */
+    margin: 50px;
+    /* overflow-y: hidden; */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling adjustments for layout */
+header {
+    position: fixed;
+    top: 0;
+    left: 295px;
+    /* Start header after sidebar */
+    width: calc(100% - 370px);
+    /* Full width minus sidebar */
+    z-index: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e5e7eb;
+
+}
+
+/* Top section of the header for welcome message and date */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Bottom section of the header for board title, button, and dropdown */
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-left h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #374151;
+}
+
+.header-date {
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+.kanban-controls .dropdown-container {
+    margin-left: auto;
+}
+
+
+.header-right {
+    margin-left: auto;
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #374151;
+}
+
+header p {
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+header button {
+    background-color: transparent;
+    color: #707070;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50%;
+    justify-content: center;
+    align-self: center;
+}
+
+.header-inner {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.header-top,
+.header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.board-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #374151;
+    margin: 0;
+}
+
+
+.current-date {
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+
+
+
+.dropdown-select {
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.dropdown-select option {
+    padding: 1rem;
+    border: none;
+
+
+}

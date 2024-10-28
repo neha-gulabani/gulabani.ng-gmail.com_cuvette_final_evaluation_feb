@@ -1,0 +1,113 @@
+/* settings.css */
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.settings-page {
+    display: flex;
+    height: 100vh;
+
+
+}
+
+.input-group-setting {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group-setting input {
+    width: 100%;
+    padding: 12px 40px 12px 40px;
+    /* Adjust padding for left and right icons */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-icon-left,
+.input-icon-right {
+    position: absolute;
+    color: #888;
+}
+
+.settings-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: left;
+    align-self: left;
+}
+
+.settings-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.settings-form label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.settings-form input {
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+
+}
+
+.settings-form input:focus {
+    border-color: #007bff;
+}
+
+.settings-page>button[type="submit"] {
+    background-color: #00bcd4;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.settings-page>button[type="submit"]:hover {
+    background-color: #0097a7;
+}
+
+.settings-page>button[type="submit"]:active {
+    background-color: #00838f;
+}
+
+.upd {
+    width: Fill (493.39px)px;
+    height: Hug (55.13px)px;
+    padding: 14px 52.31px 14px 52.31px;
+    border: none;
+    gap: 11.03px;
+    border-radius: 55.13px;
+    opacity: 0px;
+    background-color: #17A2B8;
+    color: white;
+
+}

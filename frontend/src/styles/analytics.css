@@ -1,0 +1,60 @@
+/* analytics.css */
+
+.analytics-page {
+    display: flex;
+    height: 100vh;
+    margin-left: 250px;
+}
+
+.analytics-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.analytics-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.anaicon {
+    color: #90C4CC;
+    font-size: 0.8rem;
+}
+
+.analytics-column {
+    background-color: #f9fcff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.analytics-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+.analytics-item:last-child {
+    border-bottom: none;
+}
+
+.analytics-item span:last-child {
+    font-weight: bold;
+    color: #007bff;
+}
