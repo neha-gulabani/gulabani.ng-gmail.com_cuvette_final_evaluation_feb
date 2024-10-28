@@ -279,6 +279,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    z-index: 25;
 }
 
 .kanban-board::-webkit-scrollbar {
