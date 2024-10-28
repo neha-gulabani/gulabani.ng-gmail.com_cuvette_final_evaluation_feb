@@ -37,7 +37,10 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     const completedTasks = tasks.checklist ? tasks.checklist.filter(item => item.completed).length : 0;
     const totalTasks = tasks.checklist ? tasks.checklist.length : 0;
 
-    const handleEditClick = () => setEditModalOpen(true);
+    const handleEditClick = () => {
+        setPopupVisible(false)
+        setEditModalOpen(true)
+    };
 
 
 
@@ -85,6 +88,7 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     const handleStatusChange = (newStatus) => onStatusChange(tasks._id, newStatus);
 
     const handleShare = () => {
+        setPopupVisible(false)
         const shareLink = `${window.location.origin}/share/${tasks._id}`;
         navigator.clipboard.writeText(shareLink)
             .then(() => {
@@ -144,7 +148,10 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
                         />
                     )}
                     <button className='btns' onClick={handleShare}>Share</button>
-                    <button className='btns' onClick={() => setDeleteModalOpen(true)} style={{ color: 'red' }}>Delete</button>
+                    <button className='btns' onClick={() => {
+                        setDeleteModalOpen(true)
+                        setPopupVisible(false)
+                    }} style={{ color: 'red' }}>Delete</button>
                 </div>
             )}
 
