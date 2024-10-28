@@ -127,8 +127,6 @@
     word-wrap: break-word;
     white-space: normal;
     overflow-wrap: break-word;
-
-    border: 1pt solid red;
     flex-direction: row;
     display: flex;
 
