@@ -112,7 +112,7 @@
 }
 
 
-.checklist-item {
+.modal-overlay-add>.checklist-item {
     display: flex;
     gap: 0.5rem;
     justify-content: space-between;
