@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-h2 {
+.analytics-page>h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
     color: #333;

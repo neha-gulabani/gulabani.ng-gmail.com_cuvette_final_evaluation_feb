@@ -47,8 +47,9 @@
     text-align: center;
 }
 
-h2 {
+.auth-right>h2 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .input-group {
