@@ -37,8 +37,8 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     const completedTasks = tasks.checklist ? tasks.checklist.filter(item => item.completed).length : 0;
     const totalTasks = tasks.checklist ? tasks.checklist.length : 0;
 
-    const handleEditClick = () => {
-        setPopupVisible(false)
+    const handleEditClick = (e) => {
+         e.stopPropagation();
         setEditModalOpen(true)
     };
 
