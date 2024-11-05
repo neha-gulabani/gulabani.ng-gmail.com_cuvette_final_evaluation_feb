@@ -50,7 +50,7 @@ const AddPeopleModal = ({ isOpen, onClose, tasks }) => {
                     ) : (
                         <div>
                             <h3>{message}</h3>
-                            <button onClick={onClose} className="save-btn-ppl" disabled={isSaving}>Okay, got it!</button>
+                            <button onClick={onClose} className="save-btn-ppl" >Okay, got it!</button>
                         </div>
                     )}
                 </div>
