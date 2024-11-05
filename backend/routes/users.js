@@ -248,10 +248,6 @@ router.post('/assignTasksToUser', auth, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const currentUser = await User.findById(req.user._id);
-        if (currentUser.sharedWith.includes(userToAdd._id)) {
-            return res.status(400).json({ message: 'User already has access to your tasks.' });
-        }
 
 
         await User.findByIdAndUpdate(
