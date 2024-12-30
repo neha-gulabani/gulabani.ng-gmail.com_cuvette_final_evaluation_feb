@@ -3,32 +3,21 @@
     gap: 20px;
     background-color: #ffffff;
     overflow-x: auto;
-
-    overflow-y: hidden;
+    width: 900px;
 
     height: 800px;
-
     padding-bottom: 10px;
     white-space: nowrap;
-
     margin-left: 250px;
-    z-index: 0;
 }
-
 
 .kanban-column {
     flex: 0 0 350px;
-
     background-color: #f9fafb;
     padding: 20px;
-
-
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-
-    height: 93%;
-
+    overflow-y: visible;
 }
 
 
@@ -571,4 +560,100 @@
 
 .cancel-delete:hover {
     background-color: #ffeded;
+}
+
+.add-column-btn {
+    min-width: 250px;
+    height: 40px;
+    margin: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-column-btn:hover {
+    border-color: #999;
+    color: #333;
+}
+
+.add-column-form {
+    min-width: 250px;
+    margin: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-column-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-column-form button {
+    padding: 6px 12px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-column-form button:first-of-type {
+    background: #007bff;
+    color: white;
+}
+
+.add-column-form button:last-of-type {
+    background: #dc3545;
+    color: white;
+}
+
+.kanban-column-header .fas {
+    margin-left: 8px;
+    cursor: pointer;
+    color: #666;
+}
+
+.kanban-column-header .fas:hover {
+    color: #333;
+}
+
+.kanban-column-header input {
+    font-size: 1.17em;
+    font-weight: bold;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 150px;
+}
+
+.kanban-column-content {
+    min-height: 100px;
+    padding: 8px;
+}
+
+.kanban-task {
+    cursor: grab;
+    transition: background-color 0.2s ease;
+}
+
+.kanban-task:active {
+    cursor: grabbing;
+}
+
+
+.kanban-task[data-rbd-dragging="true"] {
+    background: #f5f5f5;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.kanban-column-content[data-rbd-droppable-id][data-rbd-drag-over="true"] {
+    background-color: rgba(0, 0, 0, 0.02);
 }

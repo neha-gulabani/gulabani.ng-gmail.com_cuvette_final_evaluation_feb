@@ -15,7 +15,7 @@ function App() {
   return (
     <UserProvider>
       <Router>
-        <AppContent /> {/* Separate component to use useLocation hook */}
+        <AppContent />
       </Router>
     </UserProvider>
   );
@@ -26,7 +26,7 @@ function AppContent() {
 
   return (
     <div style={{ display: 'flex' }}>
-      {/* Render Sidebar only if the path is not "/" */}
+
       {location.pathname !== '/' && !location.pathname.startsWith('/share') && <Sidebar />}
       <div style={{ flex: 1 }}>
         <Routes>

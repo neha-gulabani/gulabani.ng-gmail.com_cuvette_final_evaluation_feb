@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 
-const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, onDelete, callToast }) => {
+const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, onDelete, callToast, setTask }) => {
     const [popupVisible, setPopupVisible] = useState(false);
     const [tasks, setTasks] = useState(task);
     const [popupPosition, setPopupPosition] = useState({ top: 0, right: 0 });
@@ -17,11 +17,6 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     const { user } = useUser();
     const popupRef = useRef(null);
     const buttonRef = useRef(null);
-
-
-
-
-
 
 
     const formattedDate = tasks.dueDate ? format(new Date(tasks.dueDate), 'MMM do') : '';
@@ -38,9 +33,13 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
     const totalTasks = tasks.checklist ? tasks.checklist.length : 0;
 
     const handleEditClick = (e) => {
-         e.stopPropagation();
+        e.stopPropagation();
         setEditModalOpen(true)
     };
+
+    useEffect(() => {
+        setTasks(task);
+    }, [task]);
 
 
 
@@ -50,22 +49,28 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
                 buttonRef.current && !buttonRef.current.contains(event.target)) {
                 setPopupVisible(false);
             }
-        };
+        }
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleDeleteClick = () => {
-        axios.delete(`https://promanage-jk02.onrender.com/api/task/deleteTask/${tasks._id}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then(() => {
-                onDelete(tasks._id);
-            })
-            .catch(error => console.error('Error deleting task:', error));
+    const handleDeleteClick = async () => {
+        try {
+
+            setTask((prevTasks) => prevTasks.filter((task) => task._id !== tasks._id))
+            await axios.delete(`http://localhost:5000/api/task/deleteTask/${tasks._id}`, {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.getItem('token')}`
+                }
+            });
+
+
+            setDeleteModalOpen(false);
+        } catch (error) {
+            console.error('Error deleting task:', error);
+
+        }
     };
 
     const handleUpdateTask = (updatedTask) => {
@@ -103,8 +108,9 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
 
     const getUserInitials = () => {
         if (!task.assignees || task.assignees.length === 0) return '';
-        console.log('getUserInitial', task)
+        console.log('fixing user initials:', task.assignees)
         const assignedEmail = task.assignees[0].email;
+        console.log(assignedEmail, assignedEmail.charAt(0).toUpperCase())
         return assignedEmail.charAt(0).toUpperCase();
     };
 
@@ -118,11 +124,11 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
 
                     <span className={`priority ${tasks.priority.toLowerCase()}`}>
 
-                        <i class="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
                         {tasks.priority} PRIORITY
                     </span>
 
-                    {user && task.createdBy._id === user.id && task.assignees && task.assignees.length > 0 && task.assignees[0].email != user.email && (
+                    {user && task.createdBy._id !== user.id && task.assignees && task.assignees.length > 0 && task.assignees[0].email != user.email && (
                         <span className="user-initials-task">{getUserInitials()}</span>
                     )}
                 </div>
@@ -148,6 +154,7 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
                         />
                     )}
                     <button className='btns' onClick={handleShare}>Share</button>
+
                     <button className='btns' onClick={() => {
                         setDeleteModalOpen(true)
                         setPopupVisible(false)
@@ -175,7 +182,7 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
                     <h5>
                         Checklist ({completedTasks}/{totalTasks})
                         <button onClick={() => setChecklistCollapsed(prev => !prev)} className="collapse-arrow-btn">
-                            {isChecklistCollapsed ? <i class="fa fa-angle-down" aria-hidden="true"></i> : <i class="fa fa-angle-up" aria-hidden="true"></i>}
+                            {isChecklistCollapsed ? <i className="fa fa-angle-down" aria-hidden="true"></i> : <i class="fa fa-angle-up" aria-hidden="true"></i>}
                         </button>
                     </h5>
                     {!isChecklistCollapsed && tasks.checklist.map((item, index) => (
@@ -198,8 +205,8 @@ const KanbanTask = ({ task, isCollapsed, toggleChecklistItem, onStatusChange, on
                 {formattedDate && <span className={dueDateClass}>{formattedDate}</span>}
                 <div className='status-btn'>
                     <button onClick={() => handleStatusChange('backlog')}>Backlog</button>
-                    <button onClick={() => handleStatusChange('to-do')}>Todo</button>
-                    <button onClick={() => handleStatusChange('in-progress')}>In Progress</button>
+                    <button onClick={() => handleStatusChange('todo')}>Todo</button>
+                    <button onClick={() => handleStatusChange('inprogress')}>In Progress</button>
                     <button onClick={() => handleStatusChange('done')}>Done</button>
                 </div>
             </div>

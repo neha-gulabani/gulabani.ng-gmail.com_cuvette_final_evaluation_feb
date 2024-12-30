@@ -1,4 +1,4 @@
-// Sidebar Component (Sidebar.js)
+
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/sidebar.css';
@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 
 
 const Sidebar = () => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     const navigate = useNavigate()
     const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
 
@@ -17,7 +17,7 @@ const Sidebar = () => {
     };
 
     const confirmLogout = () => {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         navigate('/');
     };
 

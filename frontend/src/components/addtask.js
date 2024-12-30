@@ -3,6 +3,7 @@ import axios from 'axios';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../styles/addtask.css';
+// import socket from '../socket';
 import { jwtDecode } from 'jwt-decode';
 
 const AddTaskModal = ({ isOpen, onClose, onSave }) => {
@@ -19,13 +20,13 @@ const AddTaskModal = ({ isOpen, onClose, onSave }) => {
     const [showUsersDropdown, setShowUsersDropdown] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
 
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const decoded = jwtDecode(token);
     const userId = decoded._id;
 
     useEffect(() => {
         if (isOpen) {
-            axios.get('https://promanage-jk02.onrender.com/api/task/fetchUsers')
+            axios.get('http://localhost:5000/api/task/fetchUsers')
                 .then(response => setUsers(response.data))
                 .catch(error => console.error('Error fetching users:', error));
         }
@@ -57,25 +58,32 @@ const AddTaskModal = ({ isOpen, onClose, onSave }) => {
     const handleSave = () => {
         if (validateForm()) {
             setIsSaving(true);
+            console.log('assigness when adding:', assignees)
             const taskData = {
                 title,
                 priority,
                 dueDate,
                 assignees,
-                checklist
-            };
+                checklist,
 
-            axios.post('https://promanage-jk02.onrender.com/api/task/addTask', taskData, {
+            };
+            let newTask;
+
+            axios.post('http://localhost:5000/api/task/addTask', taskData, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 },
             })
                 .then(response => {
+                    newTask = response.data;
+
                     onSave(response.data);
                     onClose();
                 })
                 .catch(error => console.error('Error adding task:', error))
                 .finally(() => setIsSaving(false));
+
+
         }
     };
 

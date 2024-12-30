@@ -14,7 +14,7 @@ const MainPage = () => {
     const [selectedTimeframe, setSelectedTimeframe] = useState('This Week');
     const [tasks, setTasks] = useState([]);
     const [filteredTasks, setFilteredTasks] = useState([]);
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
     const { user, loginUser } = useUser();
@@ -38,7 +38,7 @@ const MainPage = () => {
     const currentDate = formatDateWithSuffix(new Date());
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         if (token) {
             const decoded = jwtDecode(token);
             setUsername(decoded.name);
@@ -47,21 +47,28 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         if (token) {
-            axios.get('https://promanage-jk02.onrender.com/api/task/tasks', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-                .then(response => {
-                    setTasks(response.data);
-                })
-                .catch(error => {
-                    console.error('Error fetching tasks:', error);
-                });
+            fetchTasks()
+
         }
     }, []);
+
+    const fetchTasks = () => {
+        axios.get('http://localhost:5000/api/task/tasks', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log(response.data)
+                setTasks(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching tasks:', error);
+            });
+
+    }
 
     useEffect(() => {
         if (selectedTimeframe) {
@@ -92,6 +99,7 @@ const MainPage = () => {
     };
 
     const handleSave = (newTask) => {
+
         setTasks(prevTasks => [...prevTasks, newTask]);
         if (selectedTimeframe === 'Today' && isTaskDueToday(newTask.dueDate)) {
             setFilteredTasks((prevFilteredTasks) => [...prevFilteredTasks, newTask]);
@@ -140,7 +148,7 @@ const MainPage = () => {
                     </div>
                 </header>
 
-                <KanbanBoard tasks={filteredTasks} onSave={handleSave} onStatusChange={handleStatusChange} />
+                <KanbanBoard tasks={filteredTasks} onSave={handleSave} onStatusChange={handleStatusChange} fetchTask={fetchTasks} />
                 <AddPeopleModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} tasks={tasks} />
             </main>
         </div>

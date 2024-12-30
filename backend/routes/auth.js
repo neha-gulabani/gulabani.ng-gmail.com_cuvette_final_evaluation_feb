@@ -7,7 +7,10 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 
+
+
 router.post('/register', async (req, res) => {
+    console.log(req)
     const { name, email, password } = req.body;
     try {
         let user = await User.findOne({ email });

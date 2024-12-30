@@ -9,10 +9,10 @@ const AddPeopleModal = ({ isOpen, onClose, tasks }) => {
 
     const handleAddPeople = async () => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             setIsSaving(true);
             const response = await axios.post(
-                'https://promanage-jk02.onrender.com/api/task/assignTasksToUser',
+                'http://localhost:5000/api/task/assignTasksToUser',
                 { email, tasks },
                 {
                     headers: {

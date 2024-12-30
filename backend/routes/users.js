@@ -4,6 +4,8 @@ const User = require('../models/User');
 const Task = require('../models/Task');
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth')
+const Column = require('../models/Column');
+
 
 
 
@@ -22,26 +24,30 @@ router.get('/fetchUsers', async (req, res) => {
 
 router.post('/addTask', auth, async (req, res) => {
     try {
-        const { title, priority, dueDate, assignee, checklist } = req.body;
+        const { title, priority, dueDate, assignees, checklist } = req.body;
+        console.log('assignee', assignees)
         const createdByObjectId = new mongoose.Types.ObjectId(req.user._id);
 
         const sharedUsers = await Task.find({ createdBy: createdByObjectId }).distinct('sharedWith');
 
-        const assignees = assignee
-            ? [new mongoose.Types.ObjectId(assignee), ...sharedUsers]
+        const assignee = assignees
+            ? [new mongoose.Types.ObjectId(assignees), ...sharedUsers]
             : sharedUsers;
+
+        console.log("assignee objectif", new mongoose.Types.ObjectId(assignees))
 
         const newTask = new Task({
             title,
             priority: priority.toLowerCase(),
             dueDate,
             createdBy: createdByObjectId,
-            assignees,
+            assignees: assignee,
             checklist
         });
 
         const savedTask = await newTask.save();
         await savedTask.populate('createdBy', 'name');
+        // req.io.emit('task-added', savedTask);
         res.status(201).json(savedTask);
     } catch (error) {
         console.error(error);
@@ -71,6 +77,8 @@ router.get('/tasks', auth, async (req, res) => {
                 { createdBy: { $in: sharedUserIds } }
             ]
         }).populate('createdBy', 'name').populate('assignees', 'email');;
+
+        console.log('/tasks:', tasks)
 
 
 
@@ -127,11 +135,50 @@ router.get('/analytics', auth, async (req, res) => {
     }
 });
 
-router.put('/updateTaskStatus/:taskId', async (req, res) => {
+router.put('/updateTaskStatus/:taskId', auth, async (req, res) => {
     const { taskId } = req.params;
     const { status } = req.body;
+    console.log('updateTask', taskId, status)
 
     try {
+
+        const task = await Task.findById(taskId).populate('assignees', 'name email');
+        if (!task) {
+            return res.status(404).json({ error: 'Task not found' });
+        }
+
+        console.log('user:', req.user._id, req.user)
+
+        const assignees = task.assignees.filter(
+            assignee => !assignee._id.equals(req.user._id)
+        );
+        console.log('assignees:', assignees)
+
+        for (const assignee of assignees) {
+
+            const columnExists = await Column.findOne({
+                userId: assignee._id,
+                name: status,
+            });
+
+            console.log(columnExists)
+
+            // Create the column for the assignee if it doesn't exist
+            if (!columnExists) {
+                const lastColumn = await Column.findOne({ userId: assignee._id }).sort('-order');
+                const order = lastColumn ? lastColumn.order + 1 : 0;
+
+                const newColumn = new Column({
+                    name: status,
+                    order,
+                    userId: assignee._id,
+                });
+
+                await newColumn.save();
+            }
+        }
+
+        // Update the task's status
         const updatedTask = await Task.findByIdAndUpdate(
             taskId,
             { status },
@@ -141,6 +188,7 @@ router.put('/updateTaskStatus/:taskId', async (req, res) => {
         if (!updatedTask) {
             return res.status(404).json({ error: 'Task not found' });
         }
+        // req.io.emit('task-updated', updatedTask);
 
         res.json(updatedTask);
     } catch (error) {
@@ -148,7 +196,6 @@ router.put('/updateTaskStatus/:taskId', async (req, res) => {
         res.status(500).json({ error: 'Failed to update task status' });
     }
 });
-
 
 
 router.put('/editTask/:taskId', auth, async (req, res) => {
@@ -193,6 +240,9 @@ router.delete('/deleteTask/:taskId', auth, async (req, res) => {
         if (!deletedTask) {
             return res.status(404).json({ message: 'Task not found' });
         }
+
+        console.log(deletedTask, 'deleted successfully')
+
 
         res.status(200).json({ message: 'Task deleted successfully' });
     } catch (error) {

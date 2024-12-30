@@ -14,13 +14,13 @@ const Settings = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     useEffect(() => {
 
-        axios.get('https://promanage-jk02.onrender.com/api/auth/profile', {
+        axios.get('http://localhost:5000/api/auth/profile', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -79,7 +79,7 @@ const Settings = () => {
         try {
 
 
-            const response = await axios.put('https://promanage-jk02.onrender.com/api/auth/update', {
+            const response = await axios.put('http://localhost:5000/api/auth/update', {
                 name,
                 email,
                 oldPassword,
@@ -92,7 +92,7 @@ const Settings = () => {
 
             if (response.status === 200) {
 
-                localStorage.removeItem('token');
+                sessionStorage.removeItem('token');
                 navigate('/');
             }
         } catch (error) {
